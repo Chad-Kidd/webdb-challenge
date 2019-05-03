@@ -1,23 +1,23 @@
 
 exports.up = function(knex, Promise) {
-    return knex.schema.createTable('projects', tbl => {
+    return knex.schema.createTable("projects", tbl => {
         //id
-      tbl.increments();
+      tbl.increments().unique();
+  
+      tbl
+            .string("name", 128)
+            .notNullable();
+  
+      tbl
+            .string("description")
+            .notNullable();
 
       tbl
-          .string('project_name')
-          .notNullable();
-      
-      tbl
-          .text('description')
-          .notNullable();
-
-      //completed boolean
-      tbl 
-          .boolean('completed');
-    })
-};
-
-exports.down = function(knex, Promise) {
-    return knex.schema.dropTableIfExist('projects');
-};
+            .boolean("completed")
+            .notNullable();
+    });
+  };
+  
+  exports.down = function(knex, Promise) {
+    return knex.schema.dropTableIfExists("projects");
+  };
