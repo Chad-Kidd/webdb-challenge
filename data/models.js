@@ -31,6 +31,7 @@ module.exports = {
             });
     }
 
+
     function addAction(actions) {
         return db('actions')
             .insert(actions)

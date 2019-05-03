@@ -32,31 +32,18 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-//POST ASYNC
-router.post('/', async (req, res) => {
-  const newAction = req.body;
-
-  try {
-    const actions = await Actions('actions').addAction(newAction);
-    res.status(200).json(actions);
-  } catch (error) {
-    res.status(500).json({error: "Internal error could not post action"});
-  }
-})
-
-
 //POST 
-// router.post("/", (req, res) => {
-//   Actions
-//     .addAction(req.body)
-//     .then(actions => {
-//       res.status(200).json(actions);
-//     })
-//     .catch(err => {
-//       console.log("error", err);
-//       res.status(500).json({ message: "error updating action" });
-//     });
-// });
+router.post("/", (req, res) => {
+  Actions
+    .addAction(req.body, "id")
+    .then(actions => {
+      res.status(200).json(actions);
+    })
+    .catch(err => {
+      console.log("error", err);
+      res.status(500).json({ message: "error updating action" });
+    });
+});
 
 
 //PUT UPDATE

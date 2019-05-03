@@ -11,10 +11,6 @@ exports.up = function(knex, Promise) {
       tbl
             .string("description")
             .notNullable();
-
-      tbl
-            .boolean("completed")
-            .notNullable();
     });
   };
   
