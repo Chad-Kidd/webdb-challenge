@@ -4,6 +4,7 @@ const Projects = require("../data/models");
 
 const router = express.Router();
 
+
 router.get('/', async (req, res) => {
     try {
       const projects = await Projects.getProjects();
@@ -31,11 +32,11 @@ router.get('/', async (req, res) => {
   });
 
   router.post('/', async (req, res) => {
-    const projects = req.body;
+    
   
       try {
-        const inserted = await Projects.addProject(projects);
-        res.status(201).json(inserted);
+        const projects = await Projects.addProject(req.body);
+        res.status(201).json(projects);
       } catch (error) {
         res
           .status(500)
@@ -66,4 +67,22 @@ router.get('/', async (req, res) => {
 //       });
 //   });
 
+//weird get id/action join thing
+// router.get("/:id", (req, res) => {
+  
+//   db("projects")
+//     .where(req.params.id).first()
+
+//     .then(projects => {
+//       db("actions")
+//         .where({ project_id: req.params.id })
+//         .then(actions => {
+//           projects.actions = actions;
+//           return res.status(200).json(projects);
+//         });
+//     })
+//     .catch(err => {
+//       res.status(500).json({ Error: "There was an error getting that" });
+//     });
+// });
   module.exports = router;

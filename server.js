@@ -13,8 +13,8 @@ server.use("/api/projects", projectRouter);
 server.use("/api/actions", actionRouter);
 
 
-server.get("/", (req, res) => {
-  res.send("HERE WE GO!!!!");
+server.get('/', (req, res) => {
+  res.status(200).json({ hello: 'World!' });
 });
 
 module.exports = server;

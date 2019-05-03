@@ -23,12 +23,12 @@ exports.up = function(knex, Promise) {
           .unsigned()
           .notNullable()
           .references('id')
-          .inTable('project')
+          .inTable('projects')
           .onDelete('CASCADE')
           .onUpdate('CASCADE');
     })
   };
   
   exports.down = function(knex, Promise) {
-    return knex.schema.dropTableIfExist('actions');
+    return knex.schema.dropTableIfExists('actions');
   };
